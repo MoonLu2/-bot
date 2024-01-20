@@ -1,6 +1,6 @@
 import discord
-from bot_logic import generate
-from random_symbol import symbol_gen
+from generate_pass import generate
+from random import symbol_gen
 
 # Переменная intents - хранит привилегии бота
 intents = discord.Intents.default()
