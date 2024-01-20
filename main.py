@@ -14,13 +14,28 @@ async def on_ready():
     print(f'We have logged in as {client.user}')
 
 @client.event
+
 async def on_message(message):
+
     if message.author == client.user:
         return
+
+    if message.content.startswith('+commands'):
+        await message.channel.send('''
+        
+        +hello - say Hi!        
+        +bye - say goodbye
+        +rsymbols - pick the symbol randomly
+        +password - shhhhh! never say the password...
+        
+        ''')
+
+
     if message.content.startswith('+hello'):
-        await message.channel.send("Hi!")
+            await message.channel.send("Hi!")
     elif message.content.startswith('+bye'):
-        await message.channel.send("\\U0001f642")
+        await message.channel.send("\\-_-\\")
+        exit(0)
     elif message.content.startswith('+rsymbols'):
         await message.channel.send(symbol_gen())
     elif message.content.startswith('+password'):
@@ -28,7 +43,7 @@ async def on_message(message):
         Password here...
         ''')
         await message.channel.send(generate(15))
-    else:
-        await message.channel.send(message.content)
+
+    await message.channel.send('type +commands if you forgot possible commands.')
 
 client.run("TOKEN")
