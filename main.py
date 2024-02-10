@@ -53,4 +53,4 @@ async def on_message(message):
             await message.channel.send(f'- {i}')
     await message.channel.send('type +commands if you forgot possible commands.')
 
-client.run("MTE5MzA5Mzg1ODAzMzE0Nzk5NA.Gtij8M.AgMEgMJ8x9E1OoPmvhuyLqT-ZlM64eqzNcXVcA")
+client.run("TOKEN")
