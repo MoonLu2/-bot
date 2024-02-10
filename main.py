@@ -1,6 +1,6 @@
 import discord
-from generate_pass import generate
-from random import symbol_gen
+from bot_logic import generate
+from random_symbol import symbol_gen
 
 # Переменная intents - хранит привилегии бота
 intents = discord.Intents.default()
@@ -13,8 +13,8 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'We have logged in as {client.user}')
 
+# Команды бота
 @client.event
-
 async def on_message(message):
 
     if message.author == client.user:
@@ -25,7 +25,7 @@ async def on_message(message):
         
         +hello - say Hi!        
         +bye - say goodbye
-        +rsymbols - pick the symbol randomly
+        +rsymbols - pick a symbol randomly
         +password - shhhhh! never say the password...
         
         ''')
@@ -44,6 +44,13 @@ async def on_message(message):
         ''')
         await message.channel.send(generate(15))
 
+   # Урок 6: Советы о том как избежать загрязнения в природе
+    if message.content.startswith('+saveplanet'):
+        tips_list =  ['Save plastic. It will be useful to make many things.', 'Every thing like plastic trash into correct bin.', 'Almost everything can be reused.']
+
+        await message.channel.send('Tips for saving planet:')
+        for i in tips_list:
+            await message.channel.send(f'- {i}')
     await message.channel.send('type +commands if you forgot possible commands.')
 
-client.run("TOKEN")
+client.run("MTE5MzA5Mzg1ODAzMzE0Nzk5NA.Gtij8M.AgMEgMJ8x9E1OoPmvhuyLqT-ZlM64eqzNcXVcA")
